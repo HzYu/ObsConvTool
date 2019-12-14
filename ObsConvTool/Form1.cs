@@ -34,6 +34,13 @@ namespace ObsConvTool
                 SdrTextBox.Text = SdrText;
                 StrReader.Close();
             }
+
+            //if (Regex.IsMatch(a, "[\\s]+"))
+            //{
+            //    a = new Regex("[\\s]+").Replace(a, " ");//連續空白 轉成 一個空白
+            //    a = a.Replace(" ", ",");
+            //}
+
         }
     }
 }
