@@ -6,17 +6,18 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ObsConvTool
 {
-    public partial class Form1 : Form
+    public partial class ObsConvTool : Form
     {
 
         private string SdrText { get; set; }
 
-        public Form1()
+        public ObsConvTool()
         {
             InitializeComponent();
         }
@@ -28,19 +29,26 @@ namespace ObsConvTool
             OpenFile.Filter = "sdr files|*.sdr|mac files|*.mac";
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {
+                FileName.Text = OpenFile.FileName.Substring(OpenFile.FileName.LastIndexOf("\\") + 1); //取得檔名
+
+                //讀取檔案
                 StreamReader StrReader = new StreamReader(OpenFile.FileName, Encoding.Default);
                 SdrText = StrReader.ReadToEnd();
-                SdrText = SdrText.Replace(" ", "");
+                SdrText = SdrToCSV(SdrText);
                 SdrTextBox.Text = SdrText;
                 StrReader.Close();
             }
+        }
 
-            //if (Regex.IsMatch(a, "[\\s]+"))
-            //{
-            //    a = new Regex("[\\s]+").Replace(a, " ");//連續空白 轉成 一個空白
-            //    a = a.Replace(" ", ",");
-            //}
-
+        /// <summary>
+        /// Sdr格式的字串轉換成CSV
+        /// </summary>
+        private string SdrToCSV(string SdrText)
+        {
+            SdrText = new Regex("[\r\n]+").Replace(SdrText, "(CR)"); //空行先取代為文字
+            SdrText = new Regex("[\\s]+").Replace(SdrText, " ");//連續空白 轉成 一個空白
+            SdrText = SdrText.Replace("(CR)", "\r\n").Replace(" ",",");
+            return SdrText;
         }
     }
 }
