@@ -76,7 +76,7 @@
             this.SdrTextBox.Multiline = true;
             this.SdrTextBox.Name = "SdrTextBox";
             this.SdrTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.SdrTextBox.Size = new System.Drawing.Size(973, 368);
+            this.SdrTextBox.Size = new System.Drawing.Size(626, 368);
             this.SdrTextBox.TabIndex = 1;
             // 
             // FileNametxt
