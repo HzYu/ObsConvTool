@@ -32,10 +32,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.檔案ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.SdrTextBox = new System.Windows.Forms.TextBox();
             this.FileNametxt = new System.Windows.Forms.Label();
             this.FileName = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SdrToMac = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -49,7 +51,7 @@
             this.檔案ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1281, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1014, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,25 +67,15 @@
             // OpenFile
             // 
             this.OpenFile.Name = "OpenFile";
-            this.OpenFile.Size = new System.Drawing.Size(224, 30);
+            this.OpenFile.Size = new System.Drawing.Size(178, 30);
             this.OpenFile.Text = "開啟檔案";
             this.OpenFile.Click += new System.EventHandler(this.OpenFile_Click);
-            // 
-            // SdrTextBox
-            // 
-            this.SdrTextBox.Font = new System.Drawing.Font("新細明體", 11F);
-            this.SdrTextBox.Location = new System.Drawing.Point(24, 135);
-            this.SdrTextBox.Multiline = true;
-            this.SdrTextBox.Name = "SdrTextBox";
-            this.SdrTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.SdrTextBox.Size = new System.Drawing.Size(626, 368);
-            this.SdrTextBox.TabIndex = 1;
             // 
             // FileNametxt
             // 
             this.FileNametxt.AutoSize = true;
             this.FileNametxt.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.FileNametxt.Location = new System.Drawing.Point(20, 102);
+            this.FileNametxt.Location = new System.Drawing.Point(17, 119);
             this.FileNametxt.Name = "FileNametxt";
             this.FileNametxt.Size = new System.Drawing.Size(152, 25);
             this.FileNametxt.TabIndex = 2;
@@ -93,25 +85,47 @@
             // 
             this.FileName.AutoSize = true;
             this.FileName.Font = new System.Drawing.Font("新細明體", 12F);
-            this.FileName.Location = new System.Drawing.Point(179, 104);
+            this.FileName.Location = new System.Drawing.Point(176, 121);
             this.FileName.Name = "FileName";
             this.FileName.Size = new System.Drawing.Size(0, 20);
             this.FileName.TabIndex = 3;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(22, 165);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(940, 388);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // SdrToMac
+            // 
+            this.SdrToMac.Font = new System.Drawing.Font("微軟正黑體", 10F);
+            this.SdrToMac.Location = new System.Drawing.Point(22, 57);
+            this.SdrToMac.Name = "SdrToMac";
+            this.SdrToMac.Size = new System.Drawing.Size(131, 38);
+            this.SdrToMac.TabIndex = 5;
+            this.SdrToMac.Text = "轉換成 Mac";
+            this.SdrToMac.UseVisualStyleBackColor = true;
             // 
             // ObsConvTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1281, 586);
+            this.ClientSize = new System.Drawing.Size(1014, 586);
+            this.Controls.Add(this.SdrToMac);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.FileName);
             this.Controls.Add(this.FileNametxt);
-            this.Controls.Add(this.SdrTextBox);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ObsConvTool";
             this.Text = "ObsConvTool";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,10 +136,11 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 檔案ToolStripMenuItem;
-        private System.Windows.Forms.TextBox SdrTextBox;
         private System.Windows.Forms.ToolStripMenuItem OpenFile;
         private System.Windows.Forms.Label FileNametxt;
         private System.Windows.Forms.Label FileName;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button SdrToMac;
     }
 }
 

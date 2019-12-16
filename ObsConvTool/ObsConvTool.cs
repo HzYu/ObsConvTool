@@ -22,6 +22,7 @@ namespace ObsConvTool
         {
             InitializeComponent();
             SdrTable = new DataTable();
+            SdrText = "";
         }
 
         private void OpenFile_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace ObsConvTool
             OpenFile.Filter = "sdr files|*.sdr|mac files|*.mac";
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {
-                SdrText = "";
+                SdrText = "column1,column2,column3,column4,column5,column6\r\n";
                 FileName.Text = OpenFile.FileName.Substring(OpenFile.FileName.LastIndexOf("\\") + 1); //取得檔名
 
                 //讀取檔案
@@ -48,8 +49,11 @@ namespace ObsConvTool
                         SdrText += SdrToCSV(strLine) + "\r\n";
                     }
                 }
-                SdrTextBox.Text = SdrText;
             }
+
+            SdrTable = CSVToDataTable(SdrText);
+            //先處理column3再顯示
+            dataGridView1.DataSource = SdrTable;
         }
 
         /// <summary>
