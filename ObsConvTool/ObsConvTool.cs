@@ -30,30 +30,40 @@ namespace ObsConvTool
             string strLine = "";
             bool Enable = false;
 
-            OpenFileDialog OpenFile = new OpenFileDialog();
-            OpenFile.InitialDirectory = ".\\";
-            OpenFile.Filter = "sdr files|*.sdr|mac files|*.mac";
-            if (OpenFile.ShowDialog() == DialogResult.OK)
+            try
             {
-                SdrText = "column1,column2,column3,column4,column5,column6\r\n";
-                FileName.Text = OpenFile.FileName.Substring(OpenFile.FileName.LastIndexOf("\\") + 1); //取得檔名
-
-                //讀取檔案
-                StreamReader StrReader = new StreamReader(OpenFile.FileName); //檔案路徑+檔名
-                while (!StrReader.EndOfStream)
+                OpenFileDialog OpenFile = new OpenFileDialog();
+                OpenFile.InitialDirectory = ".\\";
+                OpenFile.Filter = "sdr files|*.sdr|mac files|*.mac";
+                if (OpenFile.ShowDialog() == DialogResult.OK)
                 {
-                    strLine = StrReader.ReadLine();
-                    if (strLine.IndexOf("07TP") > -1) { Enable = true; }
-                    if (Enable)
+                    SdrText = "column1,column2,column3,column4,column5,column6\r\n";
+                    FileName.Text = OpenFile.FileName.Substring(OpenFile.FileName.LastIndexOf("\\") + 1); //取得檔名
+
+                    //讀取檔案
+                    StreamReader StrReader = new StreamReader(OpenFile.FileName); //檔案路徑+檔名
+                    while (!StrReader.EndOfStream)
                     {
-                        SdrText += SdrToCSV(strLine) + "\r\n";
+                        strLine = StrReader.ReadLine();
+                        if (strLine.IndexOf("07TP") > -1) { Enable = true; }
+                        if (Enable)
+                        {
+                            SdrText += SdrToCSV(strLine) + "\r\n";
+                        }
                     }
                 }
-            }
 
-            SdrTable = CSVToDataTable(SdrText);
-            //先處理column3再顯示
-            dataGridView1.DataSource = SdrTable;
+                SdrTable = CSVToDataTable(SdrText);
+                dataGridView1.DataSource = SdrTable;
+
+                //按鈕(確認Col3資料)是否鎖定
+                if (dataGridView1.RowCount > 1) { ConfirmCol3.Enabled = true; }
+                else { ConfirmCol3.Enabled = false; }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("錯誤!!");
+            }
         }
 
         /// <summary>

@@ -36,6 +36,7 @@
             this.FileName = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SdrToMac = new System.Windows.Forms.Button();
+            this.ConfirmCol3 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +52,7 @@
             this.檔案ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1014, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1016, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -75,7 +76,7 @@
             // 
             this.FileNametxt.AutoSize = true;
             this.FileNametxt.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.FileNametxt.Location = new System.Drawing.Point(17, 119);
+            this.FileNametxt.Location = new System.Drawing.Point(17, 133);
             this.FileNametxt.Name = "FileNametxt";
             this.FileNametxt.Size = new System.Drawing.Size(152, 25);
             this.FileNametxt.TabIndex = 2;
@@ -85,7 +86,7 @@
             // 
             this.FileName.AutoSize = true;
             this.FileName.Font = new System.Drawing.Font("新細明體", 12F);
-            this.FileName.Location = new System.Drawing.Point(176, 121);
+            this.FileName.Location = new System.Drawing.Point(176, 135);
             this.FileName.Name = "FileName";
             this.FileName.Size = new System.Drawing.Size(0, 20);
             this.FileName.TabIndex = 3;
@@ -93,7 +94,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 165);
+            this.dataGridView1.Location = new System.Drawing.Point(22, 179);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
@@ -102,19 +103,32 @@
             // 
             // SdrToMac
             // 
+            this.SdrToMac.Enabled = false;
             this.SdrToMac.Font = new System.Drawing.Font("微軟正黑體", 10F);
-            this.SdrToMac.Location = new System.Drawing.Point(22, 57);
+            this.SdrToMac.Location = new System.Drawing.Point(205, 66);
             this.SdrToMac.Name = "SdrToMac";
-            this.SdrToMac.Size = new System.Drawing.Size(131, 38);
+            this.SdrToMac.Size = new System.Drawing.Size(126, 38);
             this.SdrToMac.TabIndex = 5;
             this.SdrToMac.Text = "轉換成 Mac";
             this.SdrToMac.UseVisualStyleBackColor = true;
+            // 
+            // ConfirmCol3
+            // 
+            this.ConfirmCol3.Enabled = false;
+            this.ConfirmCol3.Font = new System.Drawing.Font("微軟正黑體", 10F);
+            this.ConfirmCol3.Location = new System.Drawing.Point(22, 66);
+            this.ConfirmCol3.Name = "ConfirmCol3";
+            this.ConfirmCol3.Size = new System.Drawing.Size(154, 38);
+            this.ConfirmCol3.TabIndex = 6;
+            this.ConfirmCol3.Text = "確認 Col3 資料";
+            this.ConfirmCol3.UseVisualStyleBackColor = true;
             // 
             // ObsConvTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 586);
+            this.ClientSize = new System.Drawing.Size(1016, 619);
+            this.Controls.Add(this.ConfirmCol3);
             this.Controls.Add(this.SdrToMac);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.FileName);
@@ -141,6 +155,7 @@
         private System.Windows.Forms.Label FileName;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button SdrToMac;
+        private System.Windows.Forms.Button ConfirmCol3;
     }
 }
 
