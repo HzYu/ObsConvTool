@@ -9,18 +9,21 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ObsConvTool.Model;
 
 namespace ObsConvTool
 {
     public partial class ObsConvTool : Form
     {
 
-        private string SdrText { get; set; }
+        public ValueModel ValueModel { get; set; }
         private DataTable SdrTable { get; set; }
+        private string SdrText { get; set; }
 
         public ObsConvTool()
         {
             InitializeComponent();
+            ValueModel = new ValueModel();
             SdrTable = new DataTable();
             SdrText = "";
         }
@@ -58,12 +61,33 @@ namespace ObsConvTool
 
                 //按鈕(確認Col3資料)是否鎖定
                 if (dataGridView1.RowCount > 1) { ConfirmCol3.Enabled = true; }
-                else { ConfirmCol3.Enabled = false; }
+                else
+                {
+                    MessageBox.Show("資料格式不對，或者沒有'07TP'標頭判斷", "Error");
+                    ConfirmCol3.Enabled = false;
+                }
             }
             catch(Exception ex)
             {
-                MessageBox.Show("錯誤!!");
+                MessageBox.Show("錯誤!!", "Error");
             }
+        }
+
+        //打開ConfirmCol3From視窗，並確認 Cols3數值是否區隔正確 
+        private void ConfirmCol3_Click(object sender, EventArgs e)
+        {
+            this.ValueModel.Col3Text = "";
+            //取Column3的值
+            foreach (DataRow row in SdrTable.Rows)
+            {
+                if(row["column1"].ToString() == "09F1")
+                {
+                    this.ValueModel.Col3Text += row["column3"].ToString() + "\r\n";
+                }   
+            }
+
+            ConfirmCol3Form ConfirmCol3Form = new ConfirmCol3Form(this.ValueModel);
+            ConfirmCol3Form.Show();
         }
 
         /// <summary>

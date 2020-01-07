@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfirmCol3Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmCol3Form.Designer.cs">
+      <DependentUpon>ConfirmCol3Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ValueModel.cs" />
     <Compile Include="ObsConvTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConfirmCol3Form.resx">
+      <DependentUpon>ConfirmCol3Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ObsConvTool.resx">
       <DependentUpon>ObsConvTool.cs</DependentUpon>
     </EmbeddedResource>

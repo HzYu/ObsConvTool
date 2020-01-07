@@ -122,6 +122,7 @@
             this.ConfirmCol3.TabIndex = 6;
             this.ConfirmCol3.Text = "確認 Col3 資料";
             this.ConfirmCol3.UseVisualStyleBackColor = true;
+            this.ConfirmCol3.Click += new System.EventHandler(this.ConfirmCol3_Click);
             // 
             // ObsConvTool
             // 
