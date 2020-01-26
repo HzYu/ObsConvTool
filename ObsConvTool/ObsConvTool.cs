@@ -86,7 +86,7 @@ namespace ObsConvTool
                 }   
             }
 
-            ConfirmCol3Form ConfirmCol3Form = new ConfirmCol3Form(this.ValueModel);
+            ConfirmCol3Form ConfirmCol3Form = new ConfirmCol3Form(this.ValueModel,this);//(this 為 ObsConvTool winform) 可以傳物件到另一個 winform
             ConfirmCol3Form.Show();
         }
 

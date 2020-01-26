@@ -43,6 +43,7 @@
             this.Confirm.TabIndex = 0;
             this.Confirm.Text = "確認";
             this.Confirm.UseVisualStyleBackColor = true;
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
             // 
             // Cancel
             // 

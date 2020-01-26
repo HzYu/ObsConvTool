@@ -14,12 +14,13 @@ namespace ObsConvTool
     public partial class ConfirmCol3Form : Form
     {
         public ValueModel ValueModel { get; set; }
-        public int StartId { get; set; }
+        public ObsConvTool ObsConvTool { get; set; }
 
-        public ConfirmCol3Form(ValueModel ValueModel)
+        public ConfirmCol3Form(ValueModel ValueModel,ObsConvTool obsConvTool)
         {
             InitializeComponent();
             this.ValueModel = ValueModel;
+            this.ObsConvTool = obsConvTool;
         }
 
         private void ConfirmCol3Form_Load(object sender, EventArgs e)
@@ -31,14 +32,19 @@ namespace ObsConvTool
                 //利用txt的換行，用List接值
                 List<string> List = new List<string>(this.ValueModel.Col3Text.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
 
-                this.ValueModel.Col3Text = "";//清空換加上逗號過的字串
+                //判斷 List 裡的數值是否已經有逗號做區隔
+                int ListCheck = List[0].ToString().IndexOf(",");
 
-                CheckId(List, out Length);  //判斷數值哪個位置需要加上逗號做區隔
-                for(int i=0; i<List.Count; i++)
+                if (ListCheck == -1)
                 {
-                    int index = List[i].IndexOf(".");
-                    List[i] = List[i].Insert(index + Length + 1, ",");
-                    this.ValueModel.Col3Text += List[i] + "\r\n";
+                    this.ValueModel.Col3Text = "";//清空內容 並換加上逗號過的字串
+                    CheckId(List, out Length);  //判斷數值哪個位置需要加上逗號做區隔
+                    for (int i = 0; i < List.Count; i++)
+                    {
+                        int index = List[i].IndexOf(".");
+                        List[i] = List[i].Insert(index + Length + 1, ",");
+                        this.ValueModel.Col3Text += List[i] + "\r\n";
+                    }
                 }
 
                 Confiretxt.Text = this.ValueModel.Col3Text;
@@ -49,11 +55,34 @@ namespace ObsConvTool
             }
         }
 
+        private void Confirm_Click(object sender, EventArgs e)
+        {
+            this.ValueModel.Col3Text = Confiretxt.Text;
+            this.ObsConvTool.SdrToMac.Enabled = true; //開啟轉換成Mac按鈕
+
+            //利用txt的換行，用List接值
+            List<string> List = new List<string>(this.ValueModel.Col3Text.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
+
+            //編輯 DataGridView 裡面的數值
+            int c = 0;
+            for (int i = 0; i < this.ObsConvTool.dataGridView1.RowCount -1; i++)
+            {
+                if(this.ObsConvTool.dataGridView1.Rows[i].Cells[0].Value.ToString() == "09F1")
+                {
+                    this.ObsConvTool.dataGridView1.Rows[i].Cells[2].Value = List[c];
+                    c++;
+                }
+            }
+            Close();
+        }
+
+        //取消
         private void Cancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //判斷哪個位置需要加逗號
         private void CheckId(List<string> List, out int SplitLength)
         {
             SplitLength = 2;

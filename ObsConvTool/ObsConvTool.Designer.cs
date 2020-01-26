@@ -154,8 +154,8 @@
         private System.Windows.Forms.ToolStripMenuItem OpenFile;
         private System.Windows.Forms.Label FileNametxt;
         private System.Windows.Forms.Label FileName;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button SdrToMac;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        public  System.Windows.Forms.Button SdrToMac;
         private System.Windows.Forms.Button ConfirmCol3;
     }
 }
