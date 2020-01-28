@@ -42,35 +42,50 @@ namespace ObsConvTool
                 OpenFile.Filter = "sdr files|*.sdr|mac files|*.mac";
                 if (OpenFile.ShowDialog() == DialogResult.OK)
                 {
+
                     SdrText = "column1,column2,column3,column4,column5,column6\r\n";
                     FileName.Text = OpenFile.FileName.Substring(OpenFile.FileName.LastIndexOf("\\") + 1); //取得檔名
+                    string ExtensionName = Path.GetExtension(FileName.Text); //取得副檔名
 
-                    //讀取檔案
-                    StreamReader StrReader = new StreamReader(OpenFile.FileName); //檔案路徑+檔名
-                    while (!StrReader.EndOfStream)
+                    if(ExtensionName == ".sdr")
                     {
-                        strLine = StrReader.ReadLine();
-                        if (strLine.IndexOf("07TP") > -1) { Enable = true; }
-                        if (Enable)
+                        //讀取檔案
+                        StreamReader StrReader = new StreamReader(OpenFile.FileName); //檔案路徑+檔名
+                        while (!StrReader.EndOfStream)
                         {
-                            SdrText += SdrToCSV(strLine) + "\r\n";
+                            strLine = StrReader.ReadLine();
+                            if (strLine.IndexOf("07TP") > -1) { Enable = true; }
+                            if (Enable)
+                            {
+                                SdrText += SdrToCSV(strLine) + "\r\n";
+                            }
+                        }
+                        SdrToMac.Enabled = false;
+                        MacTextbox.Text = "";
+
+                        SdrTable = CSVToDataTable(SdrText);
+                        SdrTable.Columns.RemoveAt(5); //刪除多餘的 column6
+                        dataGridView1.DataSource = SdrTable; //繫結 dataGridView
+
+                        //按鈕(確認Col3資料)是否鎖定
+                        if (dataGridView1.RowCount > 1) { ConfirmCol3.Enabled = true; }
+                        else
+                        {
+                            MessageBox.Show("資料格式不對，或者沒有'07TP'標頭判斷", "Error");
+                            ConfirmCol3.Enabled = false;
                         }
                     }
-                    SdrToMac.Enabled = false;
-                    MacTextbox.Text = "";
-                }
-
-                SdrTable = CSVToDataTable(SdrText);
-                SdrTable.Columns.RemoveAt(5); //刪除多餘的 column6
-                dataGridView1.DataSource = SdrTable;
-
-                //按鈕(確認Col3資料)是否鎖定
-                if (dataGridView1.RowCount > 1) { ConfirmCol3.Enabled = true; }
-                else
-                {
-                    MessageBox.Show("資料格式不對，或者沒有'07TP'標頭判斷", "Error");
-                    ConfirmCol3.Enabled = false;
-                }
+                    else if(ExtensionName == ".mac")
+                    {
+                        MacTextbox.Text = "";
+                        StreamReader StrReader = new StreamReader(OpenFile.FileName); //檔案路徑+檔名
+                        while (!StrReader.EndOfStream)
+                        {
+                            strLine = StrReader.ReadLine();
+                            MacTextbox.Text += strLine + "\r\n";
+                        }
+                    }
+                }       
             }
             catch(Exception ex)
             {
@@ -211,6 +226,19 @@ namespace ObsConvTool
             Result = (Math.Round(double.Parse(str) * Math.Cos((90 - double.Parse(Val)) * Math.PI / 180), 3)).ToString();
 
             return Result;
+        }
+
+        //另存新檔
+        private void Save_Click(object sender, EventArgs e)
+        {
+            this.saveFileDialog1.Filter = "Mac檔|*.Mac";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
+                sw.Write(MacTextbox.Text);
+                sw.Flush();
+                sw.Close();
+            }
         }
     }
 }

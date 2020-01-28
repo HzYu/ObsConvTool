@@ -32,6 +32,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.檔案ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.存檔ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Save = new System.Windows.Forms.ToolStripMenuItem();
             this.FileNametxt = new System.Windows.Forms.Label();
             this.FileName = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -39,9 +41,8 @@
             this.ConfirmCol3 = new System.Windows.Forms.Button();
             this.MacTextbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.存檔ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.另存新檔ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.version = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -74,9 +75,25 @@
             // OpenFile
             // 
             this.OpenFile.Name = "OpenFile";
-            this.OpenFile.Size = new System.Drawing.Size(224, 30);
+            this.OpenFile.Size = new System.Drawing.Size(178, 30);
             this.OpenFile.Text = "開啟檔案";
             this.OpenFile.Click += new System.EventHandler(this.OpenFile_Click);
+            // 
+            // 存檔ToolStripMenuItem
+            // 
+            this.存檔ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Save});
+            this.存檔ToolStripMenuItem.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.存檔ToolStripMenuItem.Name = "存檔ToolStripMenuItem";
+            this.存檔ToolStripMenuItem.Size = new System.Drawing.Size(66, 29);
+            this.存檔ToolStripMenuItem.Text = "存檔";
+            // 
+            // Save
+            // 
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(224, 30);
+            this.Save.Text = "另存新檔";
+            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // FileNametxt
             // 
@@ -151,21 +168,6 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "轉換後 Mac";
             // 
-            // 存檔ToolStripMenuItem
-            // 
-            this.存檔ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.另存新檔ToolStripMenuItem});
-            this.存檔ToolStripMenuItem.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.存檔ToolStripMenuItem.Name = "存檔ToolStripMenuItem";
-            this.存檔ToolStripMenuItem.Size = new System.Drawing.Size(66, 29);
-            this.存檔ToolStripMenuItem.Text = "存檔";
-            // 
-            // 另存新檔ToolStripMenuItem
-            // 
-            this.另存新檔ToolStripMenuItem.Name = "另存新檔ToolStripMenuItem";
-            this.另存新檔ToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
-            this.另存新檔ToolStripMenuItem.Text = "另存新檔";
-            // 
             // version
             // 
             this.version.AutoSize = true;
@@ -216,8 +218,9 @@
         private System.Windows.Forms.TextBox MacTextbox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem 存檔ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 另存新檔ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Save;
         private System.Windows.Forms.Label version;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
