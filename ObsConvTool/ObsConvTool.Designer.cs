@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.存檔ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.另存新檔ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.version = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +58,7 @@
             this.存檔ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1384, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1426, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -165,11 +166,22 @@
             this.另存新檔ToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
             this.另存新檔ToolStripMenuItem.Text = "另存新檔";
             // 
+            // version
+            // 
+            this.version.AutoSize = true;
+            this.version.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.version.Location = new System.Drawing.Point(1369, 660);
+            this.version.Name = "version";
+            this.version.Size = new System.Drawing.Size(45, 22);
+            this.version.TabIndex = 9;
+            this.version.Text = "V1.0";
+            // 
             // ObsConvTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 691);
+            this.ClientSize = new System.Drawing.Size(1426, 691);
+            this.Controls.Add(this.version);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MacTextbox);
             this.Controls.Add(this.ConfirmCol3);
@@ -205,6 +217,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem 存檔ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 另存新檔ToolStripMenuItem;
+        private System.Windows.Forms.Label version;
     }
 }
 
