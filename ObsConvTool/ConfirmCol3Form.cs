@@ -39,6 +39,7 @@ namespace ObsConvTool
                 {
                     this.ValueModel.Col3Text = "";//清空內容 並換加上逗號過的字串
                     CheckId(List, out Length);  //判斷數值哪個位置需要加上逗號做區隔
+
                     for (int i = 0; i < List.Count; i++)
                     {
                         int index = List[i].IndexOf(".");
@@ -46,33 +47,42 @@ namespace ObsConvTool
                         this.ValueModel.Col3Text += List[i] + "\r\n";
                     }
                 }
-
                 Confiretxt.Text = this.ValueModel.Col3Text;
             }
             catch(Exception ex)
             {
-                MessageBox.Show("錯誤!!","Error");
+                MessageBox.Show("逗號區隔錯誤!!","Error");
             }
         }
 
+        //確認 Col3 按鈕
         private void Confirm_Click(object sender, EventArgs e)
         {
             this.ValueModel.Col3Text = Confiretxt.Text;
-            this.ObsConvTool.SdrToMac.Enabled = true; //開啟轉換成Mac按鈕
+            this.ObsConvTool.SdrToMac.Enabled = true; //轉換成Mac(按鈕開啟)
 
-            //利用txt的換行，用List接值
-            List<string> List = new List<string>(this.ValueModel.Col3Text.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
-
-            //編輯 DataGridView 裡面的數值
-            int c = 0;
-            for (int i = 0; i < this.ObsConvTool.dataGridView1.RowCount -1; i++)
+            try
             {
-                if(this.ObsConvTool.dataGridView1.Rows[i].Cells[0].Value.ToString() == "09F1")
+                //利用txt的換行，用List接值
+                List<string> List = new List<string>(this.ValueModel.Col3Text.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
+
+                //編輯 DataGridView 裡面的數值
+                int c = 0;
+                for (int i = 0; i < this.ObsConvTool.dataGridView1.RowCount - 1; i++)
                 {
-                    this.ObsConvTool.dataGridView1.Rows[i].Cells[2].Value = List[c];
-                    c++;
+                    if (this.ObsConvTool.dataGridView1.Rows[i].Cells[0].Value.ToString() == "09F1")
+                    {
+                        this.ObsConvTool.dataGridView1.Rows[i].Cells[2].Value = List[c];
+                        c++;
+                    }
                 }
+                this.ValueModel.Col3Text = Confiretxt.Text;
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("確認 Col3 錯誤!!", "Error");
+            }
+            
             Close();
         }
 
