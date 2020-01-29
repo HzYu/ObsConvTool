@@ -15,12 +15,14 @@ namespace ObsConvTool
     {
         public ValueModel ValueModel { get; set; }
         public ObsConvTool ObsConvTool { get; set; }
+        public int StartId { get; set; }
 
         public ConfirmCol3Form(ValueModel ValueModel,ObsConvTool obsConvTool)
         {
             InitializeComponent();
             this.ValueModel = ValueModel;
             this.ObsConvTool = obsConvTool;
+            this.StartId = 0;
         }
 
         private void ConfirmCol3Form_Load(object sender, EventArgs e)
@@ -43,6 +45,16 @@ namespace ObsConvTool
 
                     for (int i = 0; i < List.Count; i++)
                     {
+                        if(StartId == 100)
+                        {
+                            Length = 3;
+                        }
+                        else if(StartId == 1000)
+                        {
+                            Length = 4;
+                        }
+                        this.StartId++;
+
                         int index = List[i].IndexOf(".");
                         List[i] = List[i].Insert(index + Length + 1, ",");
                         this.ValueModel.Col3Text += List[i] + "\r\n";
@@ -105,6 +117,8 @@ namespace ObsConvTool
                 int Id = Convert.ToInt32(List[i].Substring(index + 1, SplitLength)); //切割編號的數字
                 ArrayId[i] = Id;
             }
+
+            this.StartId = Convert.ToInt32(ArrayId[0]); //儲存起始ID
 
             if(ArrayId[0] == ArrayId[1] && ArrayId[1] == ArrayId[2])
             {
