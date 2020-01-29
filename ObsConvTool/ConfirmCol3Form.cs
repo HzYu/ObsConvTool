@@ -34,8 +34,9 @@ namespace ObsConvTool
 
                 //判斷 List 裡的數值是否已經有逗號做區隔
                 int ListCheck = List[0].ToString().IndexOf(",");
+                int ListCheck2 = List[1].ToString().IndexOf(",");
 
-                if (ListCheck == -1)
+                if (ListCheck == -1 && ListCheck2 == -1)
                 {
                     this.ValueModel.Col3Text = "";//清空內容 並換加上逗號過的字串
                     CheckId(List, out Length);  //判斷數值哪個位置需要加上逗號做區隔

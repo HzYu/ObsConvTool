@@ -98,7 +98,7 @@ namespace ObsConvTool
         {
             this.ValueModel.Col3Text = "";
 
-            //取Column3的值
+            //取得Column3的值
             foreach (DataRow row in SdrTable.Rows)
             {
                 if(row["column1"].ToString() == "09F1")
@@ -111,7 +111,7 @@ namespace ObsConvTool
             ConfirmCol3Form.Show();
         }
 
-        //Sdr 轉 Mac
+        //Sdr 轉 Mac 按紐
         private void SdrToMac_Click(object sender, EventArgs e)
         {
             int c = 0;
@@ -187,6 +187,7 @@ namespace ObsConvTool
             return Retxt;
         }
 
+        #region 計算 Mac Col2 和 Col3 的值
         //計算Mac Col2 的值
         private string Mac_Col2(string str)
         {
@@ -225,8 +226,18 @@ namespace ObsConvTool
 
             Result = (Math.Round(double.Parse(str) * Math.Cos((90 - double.Parse(Val)) * Math.PI / 180), 3)).ToString();
 
+            string[] StrSplit = Result.ToString().Split('.');
+            if(StrSplit[1].Length == 1)
+            {
+                Result = StrSplit[0] + "." + StrSplit[1] + "00";
+            }
+            else if(StrSplit[1].Length == 2)
+            {
+                Result = StrSplit[0] + "." + StrSplit[1] + "0";
+            }
             return Result;
         }
+        #endregion
 
         //另存新檔
         private void Save_Click(object sender, EventArgs e)
