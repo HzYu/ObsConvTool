@@ -2,6 +2,13 @@
 觀測檔(.sdr)利用公式計算轉換為相關的數據，並輸出為.mac檔
 # 環境
 開發環境為`Visual Studio`<br>
-語言`C#`<br>
+語言`C#`
 # 簡介
-![](pic/img1.png)
+### 檔案讀取並整理.sdr檔，顯示在DataGridView
+![](Pic/img1.png)
+### <br>自動切割Col3欄位的數值，並讓使用者確認逗號是否有區隔正確
+![](Pic/img2.png)
+### <br>按下確定後，DataGridView Col3重新寫入
+![](Pic/img3.png)
+### <br>按下轉換成Mac按鈕，自動計算出相關數值
+![](Pic/img4.png)
