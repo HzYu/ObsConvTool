@@ -192,11 +192,21 @@ namespace ObsConvTool
         private string Mac_Col2(string str)
         {
             string Result = "";
+            string[] StrSplit2 = new string[2] { "0","0" };
 
             string[] StrSplit = str.Split('.');
-
             double Val1 = double.Parse("0." + StrSplit[1]) * 60;
-            string[] StrSplit2 = Val1.ToString().Split('.');
+
+            //如果Val1為整數，StrSplit2[1]為0
+            if (Val1.ToString().IndexOf(".") == -1)//整數
+            {
+                StrSplit2[1] = "0";
+            }
+            else
+            {
+                StrSplit2 = Val1.ToString().Split('.');
+            }
+
             //如果是個位數字，前面補 0
             if (StrSplit2[0].Length == 1)
             {
@@ -204,6 +214,7 @@ namespace ObsConvTool
             }
 
             //如果小數點後面為 0 ，代表整個數值為 0
+            //小數點後面不為0的話，後面小數則繼續運算
             if (Val1 != 0)
             {
                 double Val2 = Math.Round(double.Parse("0." + StrSplit2[1]) * 60,0);
