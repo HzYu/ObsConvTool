@@ -91,7 +91,7 @@
             // Save
             // 
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(224, 30);
+            this.Save.Size = new System.Drawing.Size(178, 30);
             this.Save.Text = "另存新檔";
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
@@ -176,7 +176,7 @@
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(45, 22);
             this.version.TabIndex = 9;
-            this.version.Text = "V1.0";
+            this.version.Text = "V1.3";
             // 
             // ObsConvTool
             // 

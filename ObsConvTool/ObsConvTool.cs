@@ -178,12 +178,20 @@ namespace ObsConvTool
             string Retxt = "";
             string[] StrSplit = str.Split('.');
 
-            if (StrSplit[1].Length > 2 && title == "07TP")
+            if(StrSplit.Length != 1)
             {
-                StrSplit[1] = StrSplit[1].Substring(0, 2);
-            }
+                if (StrSplit[1].Length > 2 && title == "07TP")
+                {
+                    StrSplit[1] = StrSplit[1].Substring(0, 2);
+                }
 
-            Retxt = StrSplit[1] + "." + StrSplit[0];
+                Retxt = StrSplit[1] + "." + StrSplit[0];
+            }
+            else
+            {
+                Retxt = StrSplit[0];
+            }
+            
             return Retxt;
         }
 
