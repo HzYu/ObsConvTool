@@ -59,7 +59,8 @@
             this.存檔ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1426, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1070, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -69,13 +70,13 @@
             this.OpenFile});
             this.檔案ToolStripMenuItem.Font = new System.Drawing.Font("微軟正黑體", 12F);
             this.檔案ToolStripMenuItem.Name = "檔案ToolStripMenuItem";
-            this.檔案ToolStripMenuItem.Size = new System.Drawing.Size(66, 29);
+            this.檔案ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.檔案ToolStripMenuItem.Text = "檔案";
             // 
             // OpenFile
             // 
             this.OpenFile.Name = "OpenFile";
-            this.OpenFile.Size = new System.Drawing.Size(178, 30);
+            this.OpenFile.Size = new System.Drawing.Size(142, 24);
             this.OpenFile.Text = "開啟檔案";
             this.OpenFile.Click += new System.EventHandler(this.OpenFile_Click);
             // 
@@ -85,7 +86,7 @@
             this.Save});
             this.存檔ToolStripMenuItem.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.存檔ToolStripMenuItem.Name = "存檔ToolStripMenuItem";
-            this.存檔ToolStripMenuItem.Size = new System.Drawing.Size(66, 29);
+            this.存檔ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.存檔ToolStripMenuItem.Text = "存檔";
             // 
             // Save
@@ -99,9 +100,10 @@
             // 
             this.FileNametxt.AutoSize = true;
             this.FileNametxt.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.FileNametxt.Location = new System.Drawing.Point(17, 133);
+            this.FileNametxt.Location = new System.Drawing.Point(13, 106);
+            this.FileNametxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FileNametxt.Name = "FileNametxt";
-            this.FileNametxt.Size = new System.Drawing.Size(152, 25);
+            this.FileNametxt.Size = new System.Drawing.Size(121, 20);
             this.FileNametxt.TabIndex = 2;
             this.FileNametxt.Text = "目前開啟檔案：";
             // 
@@ -109,28 +111,31 @@
             // 
             this.FileName.AutoSize = true;
             this.FileName.Font = new System.Drawing.Font("新細明體", 12F);
-            this.FileName.Location = new System.Drawing.Point(176, 135);
+            this.FileName.Location = new System.Drawing.Point(132, 108);
+            this.FileName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FileName.Name = "FileName";
-            this.FileName.Size = new System.Drawing.Size(0, 20);
+            this.FileName.Size = new System.Drawing.Size(0, 16);
             this.FileName.TabIndex = 3;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 179);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 143);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(773, 468);
+            this.dataGridView1.Size = new System.Drawing.Size(580, 374);
             this.dataGridView1.TabIndex = 4;
             // 
             // SdrToMac
             // 
             this.SdrToMac.Enabled = false;
             this.SdrToMac.Font = new System.Drawing.Font("微軟正黑體", 10F);
-            this.SdrToMac.Location = new System.Drawing.Point(205, 66);
+            this.SdrToMac.Location = new System.Drawing.Point(154, 53);
+            this.SdrToMac.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SdrToMac.Name = "SdrToMac";
-            this.SdrToMac.Size = new System.Drawing.Size(126, 38);
+            this.SdrToMac.Size = new System.Drawing.Size(94, 30);
             this.SdrToMac.TabIndex = 5;
             this.SdrToMac.Text = "轉換成 Mac";
             this.SdrToMac.UseVisualStyleBackColor = true;
@@ -140,9 +145,10 @@
             // 
             this.ConfirmCol3.Enabled = false;
             this.ConfirmCol3.Font = new System.Drawing.Font("微軟正黑體", 10F);
-            this.ConfirmCol3.Location = new System.Drawing.Point(22, 66);
+            this.ConfirmCol3.Location = new System.Drawing.Point(16, 53);
+            this.ConfirmCol3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ConfirmCol3.Name = "ConfirmCol3";
-            this.ConfirmCol3.Size = new System.Drawing.Size(154, 38);
+            this.ConfirmCol3.Size = new System.Drawing.Size(116, 30);
             this.ConfirmCol3.TabIndex = 6;
             this.ConfirmCol3.Text = "確認 Col3 資料";
             this.ConfirmCol3.UseVisualStyleBackColor = true;
@@ -151,20 +157,22 @@
             // MacTextbox
             // 
             this.MacTextbox.Font = new System.Drawing.Font("微軟正黑體", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.MacTextbox.Location = new System.Drawing.Point(830, 179);
+            this.MacTextbox.Location = new System.Drawing.Point(622, 143);
+            this.MacTextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MacTextbox.Multiline = true;
             this.MacTextbox.Name = "MacTextbox";
             this.MacTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.MacTextbox.Size = new System.Drawing.Size(525, 468);
+            this.MacTextbox.Size = new System.Drawing.Size(395, 375);
             this.MacTextbox.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(825, 133);
+            this.label1.Location = new System.Drawing.Point(619, 106);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 25);
+            this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 8;
             this.label1.Text = "轉換後 Mac";
             // 
@@ -172,17 +180,18 @@
             // 
             this.version.AutoSize = true;
             this.version.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.version.Location = new System.Drawing.Point(1369, 660);
+            this.version.Location = new System.Drawing.Point(1027, 528);
+            this.version.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(45, 22);
+            this.version.Size = new System.Drawing.Size(36, 18);
             this.version.TabIndex = 9;
             this.version.Text = "V1.3";
             // 
             // ObsConvTool
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1426, 691);
+            this.ClientSize = new System.Drawing.Size(1070, 553);
             this.Controls.Add(this.version);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MacTextbox);
@@ -193,6 +202,7 @@
             this.Controls.Add(this.FileNametxt);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ObsConvTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ObsConvTool";
