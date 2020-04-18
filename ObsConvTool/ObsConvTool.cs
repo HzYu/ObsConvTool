@@ -125,7 +125,7 @@ namespace ObsConvTool
                     if (row["column1"].ToString() == "07TP")
                     {
                         this.MacText += ReverseText(row["column2"].ToString(), "07TP") + "  ";
-                        this.MacText += ReverseText(row["column3"].ToString(), "07TP") + "\r\n";
+                        this.MacText += ReverseText(row["column3"].ToString(), "07TP-Col3") + "\r\n";
                     }
                     else if (row["column1"].ToString() == "09F1")
                     {
@@ -183,9 +183,16 @@ namespace ObsConvTool
                 if (StrSplit[1].Length > 2 && title == "07TP")
                 {
                     StrSplit[1] = StrSplit[1].Substring(0, 2);
+                    Retxt = StrSplit[1] + "." + StrSplit[0];
                 }
-
-                Retxt = StrSplit[1] + "." + StrSplit[0];
+                else if (title == "07TP-Col3") //標題 col3 改為取前兩位
+                {
+                    Retxt = StrSplit[0].Substring(0, 2);
+                }
+                else //09F1
+                {
+                    Retxt = StrSplit[1] + "." + StrSplit[0];
+                } 
             }
             else
             {
