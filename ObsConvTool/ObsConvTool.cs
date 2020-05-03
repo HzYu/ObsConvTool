@@ -43,7 +43,7 @@ namespace ObsConvTool
                 if (OpenFile.ShowDialog() == DialogResult.OK)
                 {
 
-                    SdrText = "column1,column2,column3,column4,column5,column6\r\n";
+                    SdrText = "column1,column2,column3,column4,column5,column6,column7\r\n";
                     FileName.Text = OpenFile.FileName.Substring(OpenFile.FileName.LastIndexOf("\\") + 1); //取得檔名
                     string ExtensionName = Path.GetExtension(FileName.Text); //取得副檔名
 
@@ -54,17 +54,17 @@ namespace ObsConvTool
                         while (!StrReader.EndOfStream)
                         {
                             strLine = StrReader.ReadLine();
-                            if (strLine.IndexOf("07TP") > -1) { Enable = true; }
+                            if (strLine.IndexOf("07TP") > -1) { Enable = true; } //遇到07TP標題開關開啟，儲存以下內容
                             if (Enable)
                             {
                                 SdrText += SdrToCSV(strLine) + "\r\n";
                             }
                         }
-                        SdrToMac.Enabled = false;
+                        SdrToMac.Enabled = true;
                         MacTextbox.Text = "";
 
                         SdrTable = CSVToDataTable(SdrText);
-                        SdrTable.Columns.RemoveAt(5); //刪除多餘的 column6
+                        SdrTable.Columns.RemoveAt(6); //刪除多餘的 column7
                         dataGridView1.DataSource = SdrTable; //繫結 dataGridView
 
                         //按鈕(確認Col3資料)是否鎖定
@@ -85,7 +85,7 @@ namespace ObsConvTool
                             MacTextbox.Text += strLine + "\r\n";
                         }
                     }
-                }       
+                }
             }
             catch(Exception ex)
             {
@@ -93,7 +93,7 @@ namespace ObsConvTool
             }
         }
 
-        //打開ConfirmCol3From視窗，並確認 Cols3 數值是否區隔正確 
+        #region [適用於 v1.0 ~ v1.4 版本] 打開 ConfirmCol3From 視窗，並確認 Cols3 數值是否區隔正確 
         private void ConfirmCol3_Click(object sender, EventArgs e)
         {
             this.ValueModel.Col3Text = "";
@@ -104,39 +104,40 @@ namespace ObsConvTool
                 if(row["column1"].ToString() == "09F1")
                 {
                     this.ValueModel.Col3Text += row["column3"].ToString() + "\r\n";
-                }   
+                }
             }
 
             ConfirmCol3Form ConfirmCol3Form = new ConfirmCol3Form(this.ValueModel,this);//(this 為 ObsConvTool winform) 可以傳物件到另一個 winform
             ConfirmCol3Form.Show();
         }
+        #endregion
 
         //Sdr 轉 Mac 按紐
         private void SdrToMac_Click(object sender, EventArgs e)
         {
-            int c = 0;
+            //int c = 0;
             this.MacText = "LS\r\n"; //Header
             try
             {
-                List<string> List = new List<string>(this.ValueModel.Col3Text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
+                //List<string> List = new List<string>(this.ValueModel.Col3Text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
 
                 foreach (DataRow row in SdrTable.Rows)
                 {
                     if (row["column1"].ToString() == "07TP")
                     {
-                        this.MacText += ReverseText(row["column2"].ToString(), "07TP") + "  ";
+                        this.MacText += ReverseText(row["column2"].ToString(), "07TP") + "       ";
                         this.MacText += ReverseText(row["column3"].ToString(), "07TP-Col3") + "\r\n";
                     }
                     else if (row["column1"].ToString() == "09F1")
                     {
-                        string val1 = List[c];
-                        string val2 = List[c + 1];
+                        //string val1 = List[c];
+                        //string val2 = List[c + 1];
 
-                        this.MacText += ReverseText(val1, "09F1") + " ";
-                        this.MacText += Mac_Col2(row["column5"].ToString()) + "  ";
-                        this.MacText += Mac_Col3(val2, row["column4"].ToString()) + "  \r\n";
+                        this.MacText += ReverseText(row["column3"].ToString(), "09F1") + "     ";
+                        this.MacText += Mac_Col2(row["column6"].ToString()) + "    ";
+                        this.MacText += Mac_Col3(row["column4"].ToString(), row["column5"].ToString()) + "  \r\n";
 
-                        c += 2;
+                        //c += 2;
                     }
                 }
                 MacTextbox.Text = this.MacText;
@@ -152,6 +153,12 @@ namespace ObsConvTool
         /// </summary>
         private string SdrToCSV(string SdrText)
         {
+            //07TP 和 09F1 資料行，利用空白判斷(36個空白)，Col2 新增逗號區隔數值
+            if (SdrText.IndexOf("07TP") > -1 || SdrText.IndexOf("09F1") > -1)
+            {
+                SdrText = SdrText.Insert(36, ",");
+            }
+
             SdrText = new Regex("[\r\n]+").Replace(SdrText, "(CR)"); //空行先取代為文字
             SdrText = new Regex("[\\s]+").Replace(SdrText, " ");//連續空白 轉成 一個空白
             SdrText = SdrText.Replace("(CR)", "\r\n").Replace(" ",",");
@@ -173,7 +180,7 @@ namespace ObsConvTool
             return dt;
         }
 
-        private string ReverseText(string str , string title)
+        private string ReverseText(string str, string title)
         {
             string Retxt = "";
             string[] StrSplit = str.Split('.');
@@ -192,13 +199,10 @@ namespace ObsConvTool
                 else //09F1
                 {
                     Retxt = StrSplit[1] + "." + StrSplit[0];
-                } 
+                }
             }
-            else
-            {
-                Retxt = StrSplit[0];
-            }
-            
+            else{ Retxt = StrSplit[0]; }
+
             return Retxt;
         }
 
@@ -239,14 +243,15 @@ namespace ObsConvTool
                     StrSplit3[0] = "0" + StrSplit3[0];
                 }
                 Result += StrSplit[0] + "." + StrSplit2[0] + StrSplit3[0];
+                Result = Result.PadRight(6,' ');
             }
             else
-            { Result = "0.0000";}
+            { Result = "0.000000"; }
             return Result;
         }
 
         //計算Mac Col3 的值
-        private string Mac_Col3(string str , string Val)
+        private string Mac_Col3(string str, string Val)
         {
             string Result = "";
 
@@ -261,6 +266,7 @@ namespace ObsConvTool
             {
                 Result = StrSplit[0] + "." + StrSplit[1] + "0";
             }
+            Result = Result.PadLeft(6, ' ');
             return Result;
         }
         #endregion
