@@ -60,7 +60,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1427, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1553, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -123,14 +123,14 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(773, 468);
+            this.dataGridView1.Size = new System.Drawing.Size(893, 482);
             this.dataGridView1.TabIndex = 4;
             // 
             // SdrToMac
             // 
             this.SdrToMac.Enabled = false;
             this.SdrToMac.Font = new System.Drawing.Font("微軟正黑體", 10F);
-            this.SdrToMac.Location = new System.Drawing.Point(205, 66);
+            this.SdrToMac.Location = new System.Drawing.Point(22, 66);
             this.SdrToMac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SdrToMac.Name = "SdrToMac";
             this.SdrToMac.Size = new System.Drawing.Size(125, 38);
@@ -143,31 +143,32 @@
             // 
             this.ConfirmCol3.Enabled = false;
             this.ConfirmCol3.Font = new System.Drawing.Font("微軟正黑體", 10F);
-            this.ConfirmCol3.Location = new System.Drawing.Point(21, 66);
+            this.ConfirmCol3.Location = new System.Drawing.Point(180, 66);
             this.ConfirmCol3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ConfirmCol3.Name = "ConfirmCol3";
             this.ConfirmCol3.Size = new System.Drawing.Size(155, 38);
             this.ConfirmCol3.TabIndex = 6;
             this.ConfirmCol3.Text = "確認 Col3 資料";
             this.ConfirmCol3.UseVisualStyleBackColor = true;
+            this.ConfirmCol3.Visible = false;
             this.ConfirmCol3.Click += new System.EventHandler(this.ConfirmCol3_Click);
             // 
             // MacTextbox
             // 
             this.MacTextbox.Font = new System.Drawing.Font("微軟正黑體", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.MacTextbox.Location = new System.Drawing.Point(829, 179);
+            this.MacTextbox.Location = new System.Drawing.Point(981, 179);
             this.MacTextbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MacTextbox.Multiline = true;
             this.MacTextbox.Name = "MacTextbox";
             this.MacTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.MacTextbox.Size = new System.Drawing.Size(525, 468);
+            this.MacTextbox.Size = new System.Drawing.Size(525, 482);
             this.MacTextbox.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(825, 132);
+            this.label1.Location = new System.Drawing.Point(977, 132);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 25);
             this.label1.TabIndex = 8;
@@ -177,17 +178,17 @@
             // 
             this.version.AutoSize = true;
             this.version.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.version.Location = new System.Drawing.Point(1369, 660);
+            this.version.Location = new System.Drawing.Point(1461, 686);
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(45, 22);
             this.version.TabIndex = 9;
-            this.version.Text = "V1.4";
+            this.version.Text = "V2.0";
             // 
             // ObsConvTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1427, 691);
+            this.ClientSize = new System.Drawing.Size(1553, 722);
             this.Controls.Add(this.version);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MacTextbox);
@@ -197,6 +198,7 @@
             this.Controls.Add(this.FileName);
             this.Controls.Add(this.FileNametxt);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ObsConvTool";
